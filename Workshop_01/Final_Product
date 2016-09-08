@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+  <title>Welcome to Saluki Code</title>
+</head>
+<body style="background: maroon; color: white">
+	<h1 style="text-align: center">Saluki Code</h1>
+	<p style="text-align: center"><img src="https://s-media-cache-ak0.pinimg.com/236x/5b/8d/ca/5b8dca5c59eaa3ffd534978ef56f942f.jpg"></p>
+
+	<p style="text-align: center"><a href="http://facebook.com/SalukiCode" style="color: white">Like us on Facebook</a></p>
+	<p>Saluki Code is the best, and here's why:
+		<ol>
+			<li>We teach you how to make websites</li>
+			<li>We work on cool projects</li>
+			<li>We are open to everyone</li>
+		</ol>
+	</p>
+</body>
+</html>
