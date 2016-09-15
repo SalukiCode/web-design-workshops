@@ -1,57 +1,105 @@
-<html><head>
-  <title>Welcome to Saluki Code</title>
-  <style type="text/css">
-  body {
-   background: #600;
-   color: white;
-   }
-  header {
-  text-align: center;
-  }
-  .best {
-    font-size: 2em;
-    }
+<!doctype html>
+<html>
+<head>
+	<title>Welcome to Saluki Code</title>
+	<style type="text/css">
+	body {
+		background: #600;
+		color: #fff;
+	}
+	header, footer {
+		text-align: center;
+	}
+	header h1 {
+		animation: blinky 2s infinite;
+	}
+	nav {
+		margin-top: 1%
+	}
+	a {
+		color: #fff;
+	}
 	#dog {
-    height: 7em;
-    background: red;
-    position :fixed;
-	z-index: -1;
-    animation: dogrunning 6s infinite;
-}
-@keyframes dogrunning {
-    0%   {left: 0px}
-  	50% {left: 100%;transform: rotateY(180deg)}
-    100% {left: 0%}
-}
-h1 {animation: blinky 2s infinite}
-#dog:hover {animation-play-state: paused}
-@keyframes blinky {
-  	0% {opacity: 1}
-  	50% {opacity: 0.0}
-  	100% {opacity: 1}
-}
-  a {color: white}
-</style>
+		position: fixed;
+		z-index: -1;
+		height: 100px;
+		animation: dogrunning 6s infinite;
+	}
+	#siulogo {
+		border: 1px solid white;
+		border-radius: 10%
+	}
+	@keyframes dogrunning {
+		0% {
+			left: -20%;
+		}
+		50% {
+			left: 100%;
+			transform: rotateY(180deg);
+		}
+		100% {
+			left: -20%;
+		}
+	}
+	#dog:hover {
+		animation-play-state: paused;
+	}
+	@keyframes blinky {
+		0% {
+			opacity: 1;
+		}
+		50% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+	main {
+		margin:1% 5%;
+	}
+	section {
+		padding: .5% 5%;
+		background: white;
+		color: maroon;
+		border: 1px solid maroon;
+		border-radius: 20px
+	}
+	</style>
 </head>
 <body>
- <header><h1>Saluki Code</h1>
-  
-  <img src="https://media.giphy.com/media/52LkAuJYMzjt6/giphy.gif" id="dog">
-<img src="http://siu.edu/_assets/images/siu-logo.png" alt="SIU Logo"><p></p>
- <nav>
-  <a href="http://github.com/Saluki-Code">Our Code</a>
-  <a href="http://facebook.com/SalukiCode">Our Facebook</a>
-<a href="http://youtube.com/user/salukicode">Our YouTube</a>
-</nav>
-  </header>
-  <main>
- <p class="best">Saluki Code is the best, and here's why:
-  </p><ol class="best">
-   <li>We teach you how to make websites.</li>
-   <li>We work on cool projects.</li>
-   <li>We are open to everyone.</li>
-  </ol>
-  </main>
-  <footer></footer>
-
-</body></html>
+	<header>
+		<h1>Saluki Code</h1>
+		<img id="dog" src="https://media.giphy.com/media/52LkAuJYMzjt6/giphy.gif">
+		<img alt="SIU Logo" src="http://siu.edu/_assets/images/siu-logo.png" id="siulogo">
+		<nav>
+			<a href="http://github.com/Saluki-Code">Our Code</a>
+			<a href="http://facebook.com/SalukiCode">Our Facebook</a>
+			<a href="http://youtube.com/user/salukicode">Our YouTube</a>
+		</nav>
+	</header>
+	<main>
+		<section id="best">
+			<h1>Why Saluki Code is the best</h1>
+			<ol>
+				<li>We teach you how to make websites.</li>
+				<li>We work on cool projects.</li>
+				<li>We are open to everyone.</li>
+			</ol>
+		</section>
+		<section id="contact">
+			<h1>Contact Us</h1>
+			<p>Please contact us with any questions you have:
+				<ul>
+					<li>Nick Whetstone, President <span class="email">(nickwhetstone@siu.edu)</span></li>
+					<li>Kane Rodriguez, Vice President <span class="email">(kaustez@siu.edu)</span></li>
+					<li>Evan McClelland, Treasurer <span class="email">(emcclelland93@siu.edu)</span></li>
+					<li>Derek Tucker, Marketing Officer <span class="email">(derektucker@siu.edu)</span></li>
+					<li>Justin Loveless, Secretary <span class="email">(justin.loveless89@siu.edu)</span></li>
+				</ul>
+			</p>
+		</section>
+	</main>
+	<footer>&copy; Saluki Code, 2016</footer>
+</body>
+</html>
