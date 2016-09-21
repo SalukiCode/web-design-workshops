@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Toggle the bulb below by pressing the button!</h1>
+
+<button id="yo" onclick="toggleLight()">bulb off</button>
+
+<p>JavaScript can change HTML attributes.</p>
+
+<img id="myImage" src="pic_bulboff.gif" style="width:100px">
+
+<script>
+var current = 1;
+
+function toggleLight() {
+     var myImage = document.getElementById('myImage');
+    
+     if(current == 0) {
+           current++;
+           myImage.src = "http://www.w3schools.com/js/pic_bulboff.gif";
+           document.getElementById('yo').innerHTML = 'bulb off';
+     } else if (current == 1) {
+           current++;
+           myImage.src = "http://www.w3schools.com/js/pic_bulbon.gif";
+           document.getElementById('yo').innerHTML = 'bulb on';
+     } else if (current == 2) {
+           current = 0;
+           myImage.src ="http://vignette1.wikia.nocookie.net/pokemon/images/b/b8/001Bulbasaur_Dream.png/revision/latest?cb=20140903033758";
+           document.getElementById('yo').innerHTML = 'bulb asaur';
+           myImage.alt = 'bulba bulba';
+     }
+}
+</script>
+
+</body>
+</html>
