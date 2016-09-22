@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+	<title>Welcome to Saluki Code</title>
+	<style type="text/css">
+	body {
+		background: #c0c0c0;
+		color: white;
+	}
+	header, footer {
+		text-align: center;
+	}
+	nav {
+		margin-top: 1%;
+	}
+	a {
+		color: white;
+	}
+	#siulogo {
+		border: 1px solid white;
+		border-radius: 10%;
+	}
+	.email a {
+		color: maroon;
+	}
+	main {
+		margin:1% 5%;
+	}
+	section {
+		padding: .5% 5%;
+		background: white;
+		color: black;
+		border: 1px solid black;
+		border-radius: 20px;
+		margin: .5em;
+	}
+	input {
+		margin-left: .2em;
+		margin-bottom: 1em;
+	}
+	#design {
+		list-style-type: none;
+		-webkit-padding-start: 0px;
+	}
+	</style>
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+</head>
+<body>
+	<header>
+		<h1>My Name</h1>
+		<img alt="My Logo" src="http://www.faithbaptist.ca/sites/default/files/images/staff/generic-person_0.png" id="mylogo">
+		<nav>
+			<a href="http://twitter.com">Twitter</a>
+			<a href="http://github.com">GitHub</a>
+			<a href="http://linkedin.com">LinkedIn</a>
+		</nav>
+	</header>
+	<main>
+		<section id="about">
+			<h1>About me</h1>
+			<p>I am a person.</p>
+		</section>
+		<section id="classes">
+			<h1>Classes I'm taking:</h1>
+			<p id="classP">
+				<ul id="classList">
+					<li>College 101</li>
+					<li>Math 456</li>
+					<li>Physical Education 201</li>
+				</ul>
+			</p>
+		</section>
+		<section id="extra">
+			<h1>What I do outside of class:</h1>
+			<p>
+				<ul id="extraList">
+					<li>Saluki Code, the best club on campus</li>
+					<li>Volunteer at the zoo</li>
+					<li>Marching band</li>
+				</ul>
+			</p>
+		</section>
+		<section id="bgcolor">
+			<h1>Design Preview</h1>
+			<ul id="design">
+				<li><label for="bgPick"> Preview your page's background color:</label><input id="bgPick" type="text"></li>
+				<li><label for="txtPick"> Preview your section's content color:</label><input id="txtPick" type="text"></li>
+				<li><label for="sectBgPick"> Preview your section's background color:</label><input id="sectBgPick" type="text"></li>
+			</ul>
+		</section>
+	</main>
+	<footer>
+	</footer>
+	<script>
+	document.getElementById("bgPick").onkeyup = changeBackground;
+	document.getElementById("txtPick").onkeyup = changeTextColor;
+	document.getElementById("sectBgPick").onkeyup = changeSectionBackground;
+
+	function changeBackground () {
+		var myvar = document.getElementById("bgPick").value;
+		document.getElementsByTagName("body")[0].style.background = myvar;
+	}
+	function changeTextColor () {
+		var myvar = document.getElementById("txtPick").value;
+		var sections = document.querySelectorAll("section");
+		for (var i = 0; i < sections.length-1; i++)
+			sections[i].style.color = myvar;
+	}
+	function changeSectionBackground () {
+		var myvar = document.getElementById("sectBgPick").value;
+		var sections = document.querySelectorAll("section");
+		for (var i = 0; i < sections.length-1; i++)
+			sections[i].style.background = myvar;
+	}
+	</script>
+</body>
+</html>
