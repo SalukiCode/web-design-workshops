@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+	<title>Welcome to Saluki Code</title>
+	<style type="text/css">
+	body {
+		background: maroon;
+		color: white;
+	}
+	header, footer {
+		text-align: center;
+	}
+	nav {
+		margin-top: 1%
+	}
+	a {
+		color: white;
+	}
+	#siulogo {
+		border: 1px solid white;
+		border-radius: 10%
+	}
+	main {
+		margin:1% 5%;
+	}
+	section {
+		padding: .5% 5%;
+		background: white;
+		color: maroon;
+		border: 1px solid maroon;
+		border-radius: 20px
+	}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Saluki Code</h1>
+		<img alt="SIU Logo" src="http://nickwhetstone.com/salukicode/siu-logo.png" id="siulogo">
+		<nav>
+			<a href="http://github.com/Saluki-Code">Our Code</a>
+			<a href="http://facebook.com/SalukiCode">Our Facebook</a>
+			<a href="http://youtube.com/user/salukicode">Our YouTube</a>
+		</nav>
+	</header>
+	<main>
+		<section id="demo">
+			<h1>JavaScript Demo Stuff</h1>
+			<button id="changeStuff">Change stuff</button>
+		</section>
+		<section id="contact">
+			<h1>Contact Us</h1>
+			<p>Please contact us with any questions you have:
+				<ul>
+					<li>Nick Whetstone, President <span class="email">(nickwhetstone@siu.edu)</span></li>
+					<li>Kane Rodriguez, Vice President <span class="email">(kaustez@siu.edu)</span></li>
+					<li>Evan McClelland, Treasurer <span class="email">(emcclelland93@siu.edu)</span></li>
+					<li>Derek Tucker, Marketing Officer <span class="email">(derektucker@siu.edu)</span></li>
+					<li>Justin Loveless, Secretary <span class="email">(justin.loveless89@siu.edu)</span></li>
+				</ul>
+			</p>
+		</section>
+	</main>
+	<footer>&copy; Saluki Code, 2016</footer>
+	<script>
+	document.getElementById("changeStuff").onclick = changeThings;
+	function changeThings() {
+		var color = "red";
+		var msg = "Stuff is changed!";
+		var imgLink = "https://media.giphy.com/media/52LkAuJYMzjt6/giphy.gif";
+		document.getElementById("demo").style.background = color;
+		document.getElementById("changeStuff").innerHTML = msg;
+		document.getElementById("siulogo").src = imgLink;
+	}
+	</script>
+</body>
+</html>
