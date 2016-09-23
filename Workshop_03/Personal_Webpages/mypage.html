@@ -54,7 +54,7 @@
 </head>
 <body>
 	<header>
-		<h1 class="myName">My Name</h1>
+		<h1 class="myName">Me</h1>
 		<img alt="My Logo" id="myPic" src="http://www.faithbaptist.ca/sites/default/files/images/staff/generic-person_0.png" id="mylogo">
 		<nav>
 			<a href="http://twitter.com">Twitter</a>
@@ -64,7 +64,7 @@
 	</header>
 	<main>
 		<section id="about">
-			<h1>About <span class="myName">me</span></h1>
+			<h1>About <span class="myName">Me</span></h1>
 			<p>I am a person.</p>
 		</section>
 		<section id="classes">
@@ -110,13 +110,35 @@
 	
 	function changePic () {
 		var myvar = document.getElementById("picPick").value;
+		var myHead = document.getElementsByTagName('head');
+		var myFav = document.createElement("link");
+		
+		if ( document.getElementById("favicon") ){
+			document.getElementById('favicon').href = myvar;
+		} else {
+			myFav.href = myvar;
+			myFav.rel = "shortcut icon";
+			myFav.id = "favicon";
+			myHead[0].appendChild(myFav);
+		}
+		
+		
 		document.getElementById("myPic").src = myvar;
 	}
 	function changeName () {
 		var myvar = document.getElementById("namePick").value
 		var myList = document.getElementsByClassName("myName");
-		for (var i = 0; i < myList.length; i++)
-			myList[i].innerHTML = myvar;
+		var myTitle = document.title;
+		
+		if(myvar.length) {
+			myTitle = myvar + "'s Page";
+			for (var i = 0; i < myList.length; i++)
+				myList[i].innerHTML = myvar;
+		} else {
+			myTitle = "My Page";
+			for (var i = 0; i < myList.length; i++)
+				myList[i].innerHTML = "Me";
+		}
 	}
 	function changeBackground () {
 		var myvar = document.getElementById("bgPick").value;
