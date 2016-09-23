@@ -28,8 +28,8 @@
 	}
 	section {
 		padding: .5% 5%;
-		background: white;
-		color: black;
+		background: dodgerblue;
+		color: white;
 		border: 1px solid black;
 		border-radius: 20px;
 		margin: .5em;
@@ -38,17 +38,24 @@
 		margin-left: .2em;
 		margin-bottom: 1em;
 	}
+	body {
+		background: turquoise;
+	}
 	#design {
 		list-style-type: none;
 		-webkit-padding-start: 0px;
 	}
+	.myName {
+		
+	}
+	
 	</style>
 	<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
 </head>
 <body>
 	<header>
-		<h1>My Name</h1>
-		<img alt="My Logo" src="http://www.faithbaptist.ca/sites/default/files/images/staff/generic-person_0.png" id="mylogo">
+		<h1 class="myName">My Name</h1>
+		<img alt="My Logo" id="myPic" src="http://www.faithbaptist.ca/sites/default/files/images/staff/generic-person_0.png" id="mylogo">
 		<nav>
 			<a href="http://twitter.com">Twitter</a>
 			<a href="http://github.com">GitHub</a>
@@ -57,7 +64,7 @@
 	</header>
 	<main>
 		<section id="about">
-			<h1>About me</h1>
+			<h1>About <span class="myName">me</span></h1>
 			<p>I am a person.</p>
 		</section>
 		<section id="classes">
@@ -81,11 +88,13 @@
 			</p>
 		</section>
 		<section id="bgcolor">
-			<h1>Design Preview</h1>
+			<h1 onclick="">Design Preview</h1>
 			<ul id="design">
 				<li><label for="bgPick"> Preview your page's background color:</label><input id="bgPick" type="text"></li>
 				<li><label for="txtPick"> Preview your section's content color:</label><input id="txtPick" type="text"></li>
 				<li><label for="sectBgPick"> Preview your section's background color:</label><input id="sectBgPick" type="text"></li>
+				<li><label for="namePick"> Preview your profile picture: </label><input id="picPick" type="text"></li>
+				<li><label for="namePick"> Preview your name: <span class="myName"></span></label><input id="namePick" type="text"></li>
 			</ul>
 		</section>
 	</main>
@@ -95,7 +104,20 @@
 	document.getElementById("bgPick").onkeyup = changeBackground;
 	document.getElementById("txtPick").onkeyup = changeTextColor;
 	document.getElementById("sectBgPick").onkeyup = changeSectionBackground;
-
+	document.getElementById("namePick").onkeyup = changeName;
+	document.getElementById("picPick").onchange = changePic; // credit goes to Sai for this one
+    document.getElementById("picPick").onkeypress = changePic; // credit goes to Sai for this one
+	
+	function changePic () {
+		var myvar = document.getElementById("picPick").value;
+		document.getElementById("myPic").src = myvar;
+	}
+	function changeName () {
+		var myvar = document.getElementById("namePick").value
+		var myList = document.getElementsByClassName("myName");
+		for (var i = 0; i < myList.length; i++)
+			myList[i].innerHTML = myvar;
+	}
 	function changeBackground () {
 		var myvar = document.getElementById("bgPick").value;
 		document.getElementsByTagName("body")[0].style.background = myvar;
