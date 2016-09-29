@@ -48,7 +48,10 @@
 	.myName {
 		
 	}
-	
+	textarea {
+		display: block;
+		width: 100%;
+	}
 	</style>
 	<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
 </head>
@@ -87,7 +90,7 @@
 				</ul>
 			</p>
 		</section>
-		<section id="bgcolor">
+		<section id="controller">
 			<h1 onclick="">Design Preview</h1>
 			<ul id="design">
 				<li><label for="bgPick"> Preview your page's background color:</label><input id="bgPick" type="text"></li>
@@ -96,6 +99,7 @@
 				<li><label for="namePick"> Preview your profile picture: </label><input id="picPick" type="text"></li>
 				<li><label for="namePick"> Preview your name: <span class="myName"></span></label><input id="namePick" type="text"></li>
 			</ul>
+			<button id="genHTML">Generate HTML!</button>
 		</section>
 	</main>
 	<footer>
@@ -115,25 +119,7 @@
 			$(this).html(myHtml);
 			currentEditable = 1;
 		}
-		
-		
 	});
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	document.getElementById("bgPick").onkeyup = changeBackground;
 	document.getElementById("txtPick").onkeyup = changeTextColor;
@@ -141,6 +127,7 @@
 	document.getElementById("namePick").onkeyup = changeName;
 	document.getElementById("picPick").onchange = changePic; // credit goes to Sai for this one
     document.getElementById("picPick").onkeypress = changePic; // credit goes to Sai for this one
+	document.getElementById("genHTML").onclick = generateHtml;
 	
 	function changePic () {
 		var myvar = document.getElementById("picPick").value;
@@ -155,8 +142,7 @@
 			myFav.id = "favicon";
 			myHead[0].appendChild(myFav);
 		}
-		
-		
+
 		document.getElementById("myPic").src = myvar;
 	}
 	function changeName () {
@@ -189,6 +175,12 @@
 		var sections = document.querySelectorAll("section");
 		for (var i = 0; i < sections.length-1; i++)
 			sections[i].style.background = myvar;
+	}
+	function generateHtml() {
+		var pageHtml = $("html").html().split("<script>\n");
+		pageHtml[0] = "<!doctype html>\n<html>\n" + pageHtml[0] + "</body>\n</html>";
+		$("#controller").append("<textarea>" + pageHtml[0] + "</textarea>");
+		$("textarea").height( $("textarea")[0].scrollHeight);
 	}
 	</script>
 </body>
