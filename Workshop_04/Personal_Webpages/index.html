@@ -1,0 +1,195 @@
+<!doctype html>
+<html>
+<head>
+	<title>My Name's Page</title>
+	<style type="text/css">
+	body {
+		background: #c0c0c0;
+		color: white;
+	}
+	header, footer {
+		text-align: center;
+	}
+	nav {
+		margin-top: 1%;
+	}
+	a {
+		color: white;
+	}
+	#siulogo {
+		border: 1px solid white;
+		border-radius: 10%;
+	}
+	.email a {
+		color: maroon;
+	}
+	main {
+		margin: 1% 5%;
+	}
+	section {
+		padding: .5% 5%;
+		background: dodgerblue;
+		color: white;
+		border: 1px solid black;
+		border-radius: 20px;
+		margin: .5em;
+	}
+	input {
+		margin-left: .2em;
+		margin-bottom: 1em;
+	}
+	body {
+		background: turquoise;
+	}
+	#design {
+		list-style-type: none;
+		-webkit-padding-start: 0px;
+	}
+	.myName {
+		
+	}
+	
+	</style>
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+</head>
+<body>
+	<header>
+		<h1 class="myName">Me</h1>
+		<img alt="My Logo" id="myPic" src="http://www.faithbaptist.ca/sites/default/files/images/staff/generic-person_0.png" id="mylogo">
+		<nav>
+			<a href="http://twitter.com">Twitter</a>
+			<a href="http://github.com">GitHub</a>
+			<a href="http://linkedin.com">LinkedIn</a>
+		</nav>
+	</header>
+	<main>
+		<section id="about">
+			<h1>About <span class="myName">Me</span></h1>
+			<p>I am a person.</p>
+		</section>
+		<section id="classes">
+			<h1>Classes I'm taking:</h1>
+			<p id="classP">
+				<ul id="classList">
+					<li>College 101</li>
+					<li>Math 456</li>
+					<li>Physical Education 201</li>
+				</ul>
+			</p>
+		</section>
+		<section id="extra">
+			<h1>What I do outside of class:</h1>
+			<p>
+				<ul id="extraList">
+					<li class="editable">Saluki Code, the best club on campus</li>
+					<li class="editable">Volunteer at the zoo</li>
+					<li class="editable">Marching band</li>
+				</ul>
+			</p>
+		</section>
+		<section id="bgcolor">
+			<h1 onclick="">Design Preview</h1>
+			<ul id="design">
+				<li><label for="bgPick"> Preview your page's background color:</label><input id="bgPick" type="text"></li>
+				<li><label for="txtPick"> Preview your section's content color:</label><input id="txtPick" type="text"></li>
+				<li><label for="sectBgPick"> Preview your section's background color:</label><input id="sectBgPick" type="text"></li>
+				<li><label for="namePick"> Preview your profile picture: </label><input id="picPick" type="text"></li>
+				<li><label for="namePick"> Preview your name: <span class="myName"></span></label><input id="namePick" type="text"></li>
+			</ul>
+		</section>
+	</main>
+	<footer>
+	</footer>
+	<script>
+	var currentEditable = 1;
+	
+	$(".editable").on("dblclick",function() {
+		
+		if(currentEditable == 1) {
+			var myHtml = $(this).html();
+			$(this).html('<input class="test" type="text" value="' + myHtml + '">' + '</input>' );
+			currentEditable = 0;
+		} else {
+			var myHtml = $(this).find("input").val();
+			$(".test").remove();
+			$(this).html(myHtml);
+			currentEditable = 1;
+		}
+		
+		
+	});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	document.getElementById("bgPick").onkeyup = changeBackground;
+	document.getElementById("txtPick").onkeyup = changeTextColor;
+	document.getElementById("sectBgPick").onkeyup = changeSectionBackground;
+	document.getElementById("namePick").onkeyup = changeName;
+	document.getElementById("picPick").onchange = changePic; // credit goes to Sai for this one
+    document.getElementById("picPick").onkeypress = changePic; // credit goes to Sai for this one
+	
+	function changePic () {
+		var myvar = document.getElementById("picPick").value;
+		var myHead = document.getElementsByTagName('head');
+		var myFav = document.createElement("link");
+		
+		if ( document.getElementById("favicon") ){
+			document.getElementById('favicon').href = myvar;
+		} else {
+			myFav.href = myvar;
+			myFav.rel = "shortcut icon";
+			myFav.id = "favicon";
+			myHead[0].appendChild(myFav);
+		}
+		
+		
+		document.getElementById("myPic").src = myvar;
+	}
+	function changeName () {
+		var myvar = document.getElementById("namePick").value
+		var myList = document.getElementsByClassName("myName");
+		var myTitle = document.title;
+		
+		if(myvar.length) {
+			myTitle = myvar + "'s Page";
+			for (var i = 0; i < myList.length; i++)
+				myList[i].innerHTML = myvar;
+		} else {
+			myTitle = "My Page";
+			for (var i = 0; i < myList.length; i++)
+				myList[i].innerHTML = "Me";
+		}
+	}
+	function changeBackground () {
+		var myvar = document.getElementById("bgPick").value;
+		document.getElementsByTagName("body")[0].style.background = myvar;
+	}
+	function changeTextColor () {
+		var myvar = document.getElementById("txtPick").value;
+		var sections = document.querySelectorAll("section");
+		for (var i = 0; i < sections.length-1; i++)
+			sections[i].style.color = myvar;
+	}
+	function changeSectionBackground () {
+		var myvar = document.getElementById("sectBgPick").value;
+		var sections = document.querySelectorAll("section");
+		for (var i = 0; i < sections.length-1; i++)
+			sections[i].style.background = myvar;
+	}
+	</script>
+</body>
+</html>
