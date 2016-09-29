@@ -145,25 +145,26 @@
 		});
 		// End Team Selector
 		
-		// Change the background color based on time
+		// Change the background color based on time. Check the time every 200ms.
 		setInterval(function() {
 			// Grab the date and time!
 			var today = new Date();
 			var seconds = today.getSeconds();
 			var minutes = today.getMinutes();
 			var hours = today.getHours();
-			// Every 10 seconds, we're going to make the background black.
+			/* When a minute is less than 20 seconds in, make the
+			background black! */
 			if (seconds < 20) {
 				$("body").css("background", "black");
 				$("body, a").css("color", "white");
 			}
-			// When a minute is between 10 and 30 seconds, make the
-			// background blue!
+			/* When a minute is between 20 and 40 seconds, make the
+			background blue! */
 			else if ((seconds > 20) && (seconds <=40)) {
 				$("body").css("background", "blue");
 				$("body, a").css("color", "white");
 			}
-			// Otherwise, we make the background maroon.
+			// Otherwise, make the background maroon.
 			else {
 				$("body").css("background", "maroon");
 				$("body").css("color", "white");
@@ -171,7 +172,7 @@
 		}, 200);
 		// End background color changer
 		
-		// Change the order of the officers every second
+		// Change the order of the officers every second (1000ms)
 		setInterval(function() {
 			// Make an array out of the list's items
 			var officers = $("#contact ul li").toArray();
