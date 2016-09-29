@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+<head>
+	<title>Saluki Code</title>
+	<style type="text/css">
+	* {
+		margin: 0;
+		padding: 0;
+	}
+	body {
+		padding-top: 1em;
+		font-size: 1.1em;
+	}
+	header, footer {
+		text-align: center;
+	}
+	h1 {
+		cursor: pointer;
+		margin-bottom: .2em;
+	}
+	nav {
+		margin-top: 1%
+	}
+	nav ul {
+		display: inline-block;
+		text-align: left;
+		list-style-type: none;
+	}
+	nav li {
+		float: left;
+		-webkit-padding-start: 0px;
+		padding-right: .4em
+	}
+	.link_menu {
+		display: none
+	}
+	.link_menu li{
+		float: none;
+		display: block
+	}
+	a {
+		color: white;
+	}
+	#siulogo {
+		border: 1px solid white;
+		border-radius: 10%
+	}
+	main {
+		margin: 1% 5%;
+	}
+	section {
+		padding: 2% 5%;
+		background: white;
+		color: maroon;
+		border: 1px solid maroon;
+		border-radius: 20px;
+		margin-bottom: .5em;
+	}
+	select {
+		font-size: 1.1em;
+		margin: .5em 0em;
+	}
+	/* This is our list of officers */
+	#contact ul {
+		margin-top: .5em;
+		padding-left: 1em
+	}
+	</style>
+	<link rel="shortcut icon" href="http://nickwhetstone.com/salukicode/siu-logo.png">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+</head>
+<body>
+	<header>
+		<h1>Saluki Code</h1>
+		<img alt="SIU Logo" src="http://nickwhetstone.com/salukicode/siu-logo.png" id="siulogo">
+		<nav>
+			<ul>
+				<li class="hoverli">
+					<p>Follow us:</p>
+					<ul class="link_menu">
+						<li><a href="http://github.com/Saluki-Code">Our Code</a></li>
+						<li><a href="http://facebook.com/SalukiCode">Our Facebook</a></li>
+						<li><a href="http://youtube.com/user/salukicode">Our YouTube</a></li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<!--This "demo" section isn't going to be in our site!
+			It's here for learning purposes only.-->
+		<section id="demo">
+			<h1>JavaScript Demo Stuff</h1>
+			<p>What's my favorite team's record?</p>
+			<select id="chooseTeam">
+				<option value="bears" default>Chicago Bears</option>
+				<option value="colts">Indianapolis Colts</option>
+				<option value="rams">Los Angeles Rams</option>
+				<option value="patriots">New England Patriots</option>
+			</select>
+			<p>Team's record: <span id="record"></span></p>
+		</section>
+		<section id="contact">
+			<h1>Contact Us</h1>
+			<p>Please contact us with any questions you have:
+				<ul>
+					<li>Nick Whetstone, President <span class="email">(nickwhetstone@siu.edu)</span></li>
+					<li>Kane Rodriguez, Vice President <span class="email">(kaustez@siu.edu)</span></li>
+					<li>Evan McClelland, Treasurer <span class="email">(emcclelland93@siu.edu)</span></li>
+					<li>Derek Tucker, Marketing Officer <span class="email">(derektucker@siu.edu)</span></li>
+					<li>Justin Loveless, Secretary <span class="email">(justin.loveless89@siu.edu)</span></li>
+				</ul>
+			</p>
+		</section>
+	</main>
+	<footer>&copy; Saluki Code, 2016</footer>
+	<script>
+		// Toggle content
+		$("h1").on("click", function() {
+			$(this).nextAll().slideToggle("fast");
+		});
+		
+		// Hover-based menu
+		$("nav .hoverli").hover(function () {
+			$('.link_menu').slideDown('fast')
+		}, function() {
+			$('.link_menu').slideUp('fast')
+		});
+		
+		// Team Selector
+		var teams = ["bears", "colts", "rams"];
+		var records = ["0-3", "1-2", "2-1"];
+		// One way to add to a list. Remember, we count starting at 0!
+		teams[3] = "patriots";
+		// Another way to add to a list
+		records.push("3-0*");
+		$("#record").text(records[0]);
+		$("#chooseTeam").on("change", function() {
+			for (var i = 0; i < teams.length; i++) {
+				if ($("#chooseTeam").val() == teams[i]) {
+					// Make the #record span's text the correct team's record.
+					$("#record").text(records[i]);
+				}
+			}
+		});
+		// End Team Selector
+		
+		// Change the background color based on time
+		setInterval(function() {
+			// Grab the date and time!
+			var today = new Date();
+			var seconds = today.getSeconds();
+			var minutes = today.getMinutes();
+			var hours = today.getHours();
+			// Every 10 seconds, we're going to make the background black.
+			if (seconds < 20) {
+				$("body").css("background", "black");
+				$("body, a").css("color", "white");
+			}
+			// When a minute is between 10 and 30 seconds, make the
+			// background blue!
+			else if ((seconds > 20) && (seconds <=40)) {
+				$("body").css("background", "blue");
+				$("body, a").css("color", "white");
+			}
+			// Otherwise, we make the background maroon.
+			else {
+				$("body").css("background", "maroon");
+				$("body").css("color", "white");
+			}
+		}, 200);
+		// End background color changer
+		
+		// Change the order of the officers every second
+		setInterval(function() {
+			// Make an array out of the list's items
+			var officers = $("#contact ul li").toArray();
+			var officer = officers.shift();
+			officers.push(officer);
+			$.each(officers, function () {
+				// this == current officer in list of officers
+				$("#contact ul").append(this); 
+			});
+		}, 1000);
+		// End officer re-ordering
+		
+	</script>
+</body>
+</html>
