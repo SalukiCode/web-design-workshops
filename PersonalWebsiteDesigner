@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+	<title>My Name's Page</title>
+	<style type="text/css">
+	body {
+		background: #c0c0c0;
+		color: white;
+	}
+	header, footer {
+		text-align: center;
+	}
+	nav {
+		margin-top: 1%;
+	}
+	a {
+		color: white;
+	}
+	img {
+		width: 14em
+	}
+	.email a {
+		color: maroon;
+	}
+	main {
+		margin: 1% 5%;
+	}
+	section {
+		padding: .5% 5%;
+		background: dodgerblue;
+		color: white;
+		border: 1px solid black;
+		border-radius: 20px;
+		margin: .5em;
+	}
+	input {
+		margin-left: .2em;
+		margin-bottom: 1em;
+	}
+	body {
+		background: turquoise;
+	}
+	#design {
+		list-style-type: none;
+		-webkit-padding-start: 0px;
+	}
+	textarea {
+		display: block;
+		width: 100%;
+		margin-top: 1em;
+	}
+	#controller {
+		padding-bottom: 1em;
+	}
+	button {
+		background-color: turquoise;
+		border: none;
+		color: white;
+		padding: 12px 28px;
+		font-size: 1.1em;
+		text-align: center;
+		cursor: pointer;
+	}
+	</style>
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+</head>
+<body>
+	<header>
+		<h1 class="myName">Me</h1>
+		<img alt="My Logo" id="myPic" src="question-mark.png" id="mylogo">
+		<nav>
+			<a href="http://twitter.com">Twitter</a>
+			<a href="http://github.com">GitHub</a>
+			<a href="http://linkedin.com">LinkedIn</a>
+		</nav>
+	</header>
+	<main>
+		<section id="about">
+			<h1>About <span class="myName">Me</span></h1>
+			<p>I am a person.</p>
+		</section>
+		<section id="classes">
+			<h1>Classes I'm taking:</h1>
+			<ul id="classList">
+				<li>College 101</li>
+				<li>Math 456</li>
+				<li>Physical Education 201</li>
+			</ul>
+		</section>
+		<section id="extra">
+			<h1>What I do outside of class:</h1>
+			<ul id="extraList">
+				<li>Saluki Code, the best club on campus</li>
+				<li>Volunteer at the zoo</li>
+				<li>Marching band</li>
+			</ul>
+		</section>
+		<section id="controller">
+			<h1 onclick="">Design Preview</h1>
+			<ul id="design">
+				<li><label for="bgPick">Preview your page's background color:</label><input id="bgPick" type="text"></li>
+				<li><label for="txtPick">Preview your section's content color:</label><input id="txtPick" type="text"></li>
+				<li><label for="sectBgPick">Preview your section's background color:</label><input id="sectBgPick" type="text"></li>
+				<li><label for="namePick">Preview your personal picture: </label><input id="picPick" type="text"></li>
+				<li><label for="namePick">Preview your name: </label><input id="namePick" type="text"></li>
+			</ul>
+			<button id="genHTML">Generate HTML!</button>
+		</section>
+	</main>
+	<footer>
+	</footer>
+	<script src="script.min.js"></script>
+</body>
+</html>
