@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<title>Saluki Code</title>
+	<link href="http://salukicode.com/css/main.min.css" rel="stylesheet" type="text/css">
+	<script src="http://code.jquery.com/jquery-2.0.2.min.js">
+	</script>
+	<style>
+.modal {
+    display: none; /* We don't want it to show by default. */
+    position: fixed; /* We want it to stay in th  sam* pla/e.
+    z-index: 1; /* We want it to lay on top of the r st of our page.o*/
+    padding-top: 100px; /* We want the box to be 100px from the top of our page. */
+    left: 0;
+    top: 0;
+    width: 100%; /* 100% of the width of the page */
+    height: 100%; /* I think you can gues... */
+    overflow: auto; /* If you put a lot of content in the modal, you might need scrolling. */
+    background-color: rgb(0,0,0); /* Black */
+    background-color: rgba(0,0,0,0.4); /* Transluscent black */
+}
+
+/* Meanwhile, inside the modal... */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    color: maroon;
+    border-radius:25px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-extra {
+    padding: 2px 16px;
+    background-color: #600;
+    border-top-left-radius:25px;
+    border-top-right-radius:25px;
+    color: white;
+}
+.modal-extra2 {
+    padding: 2px 16px;
+    color: maroon;
+}
+.modal-body {padding: 2px 16px;}
+#msgInput{;
+}
+#msgList {
+    list-style-type: none;
+}
+#msgSection {
+    padding:2% 5%;
+	background:#fff;
+	color:maroon;
+	border:1px solid maroon;
+	border-top-left-radius:20px;
+	border-top-right-radius:20px;
+	border-bottom-left-radius:0px;
+	border-bottom-right-radius:0px;
+}
+#msgSendSection {
+    padding:2% 5%;
+	background:#fff;
+	color:maroon;
+	border:1px solid maroon;
+	border-top-left-radius:0px;
+	border-top-right-radius:0px;
+	border-bottom-left-radius:20px;
+	border-bottom-right-radius:20px;
+}
+button {
+    background-color: #E5E5E5;
+    border: none;
+    color: maroon;
+    padding: 3px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+}
+button:hover {
+    background-color: maroon;
+    color: white;
+}
+	</style>
+</head>
+<body>
+	<header>
+		<h1 style="font-size: 4em;">Saluki Code Chat</h1>
+	</header>
+	<main>
+		<section id="msgSection">
+		    <label>Username: </label><input id="userName">
+		    
+		   <!-- append messages below -->
+		    <ul id="msgList">
+		        <li></li>
+		    </ul>
+		    
+		    
+		</section>
+		
+		<!-- section for sending messages -->
+		
+		<section id="msgSendSection">
+    		<textarea id="msgInput" rows="2" cols="30" placeholder="Enter text here"></textarea>
+    		
+    		<button type="button" id="msgSend">Send</button>
+    		
+    		
+    		<button id="myBtn">Chat Rules</button>
+    		
+    		    <!--modal for chat rules is below -->	    
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-extra">
+                          <span class="close">×</span>
+                          <h2>Chat Terms of Service</h2>
+                        </div>
+                        <div class="modal-body">
+                          <p>By using the chat room you agree to the rules of the chat listed below.</p>
+                        </div>
+                        <div class="modal-extra2">
+                          <h3>Rules of the Chat</h3>
+                          <ul>
+                              <li>Keep language appropriate.</li>
+                              <li>Respect other chat members.</li>
+                              <li>Mind your links.</li>
+                              <li>Do not spam the chat.</li>
+                          </ul>
+                        </div>
+                    </div>
+                </div>
+                
+        </section>
+	</main>
+	
+	<script>
+	    // We are using this for appending to the message box
+	  
+	    $('#msgInput').keypress(function(e) {
+	        if($("#userName").val() == ''){
+	            $("#userName").val("Anonymous");
+	        }
+	        if(e.which == 13) {
+                $("#msgList").append( "<li>" + $("#userName").val() + ": " + $(this).val() + "</li>" );
+                $(this).val('');
+          }
+        });
+        $('#msgSend').on("click", function() {
+            if($("#userName").val() == ''){
+	            $("#userName").val("Anonymous");
+	        }
+                $("#msgList").append( "<li>" + $("#userName").val() + ": " + $("#msgInput").val() + "</li>" );
+                $("#msgInput").val('');
+        });
+    
+	</script>
+	
+	
+	
+	
+	
+	
+	
+	<script>
+    // We want to grab the modal from the document
+    var modal = document.getElementById('myModal');
+    
+    // Grab the button that opens our modal
+    var btn = document.getElementById("myBtn");
+    
+    // Get the span tag that closes our modal
+    var span = document.getElementsByClassName("close")[0];
+    
+    // Using our button, we will
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+    
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+    
+    // When the user clicks anywhere outside of the modal, close ite
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+	<footer>
+		&copy; Saluki Code, 2016
+	</footer>
+</body>
+</html>
