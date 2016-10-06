@@ -1,0 +1,93 @@
+<html>
+<head>
+<title>We just Won! :)</title>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/core.js"></script>
+    <style type="text/css">
+        body {background: #ffccff; font-family: Verdana, Geneva, sans-serif;}
+        h1 {
+            color:#e000f9;
+        }
+        textarea {
+            width: 100%
+        }
+        #chatform {
+            position: fixed;
+            bottom: 0;
+            left: 1%;
+            padding-bottom:5;
+        }
+        button {
+            background: #e000f9;
+            border: none;
+            border-radius: 10px;
+            position: fixed;
+            bottom: 0;
+            color: white;
+            left: 1%;
+        }
+        form {
+            width: 100%;
+        }
+        textarea {
+            width: 700px;
+        }
+        #messageList {
+            background: #f7aaf7;
+            padding-left: 1%;
+            border-radius: 10px;
+            overflow: auto;
+            margin-bottom: 10%;
+        }
+        .message {
+            padding:2% 0%;
+            color: red;
+            clear: right;
+            word-wrap: break-word;
+            border-bottom: 1px dashed white;
+            padding-right: 30%;
+            /*background: url(http://www.clipartbest.com/cliparts/eiM/ABp/eiMABpKin.jpeg) no-repeat;
+            background-size: 80px;*/
+        }
+        .message:nth-of-type(2n) {
+            padding-right: 0;
+            padding-left: 30%;
+            color:blue;
+        }
+        .message:last-child {
+            border-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<!--http://www.w3schools.com/colors/colors_picker.asp-->
+<main>
+<h1 id="head">Wanna chat? Go ahead!</h1>
+<section id="messagelist">
+<div class="message" >hi</div>
+ <div class="message">hello</div>
+<div class="message"> heyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyhey</div>
+<div class="message"> heyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyhey</div>
+<div class="message"> heyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyhey</div>
+<div class="message"> heyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyhey</div>
+</section>
+
+<section id="chatform">
+<form id="chat">
+    <textarea></textarea>
+    <button type="submit" id="chatBtn">Send Chat!</button>
+</form>
+</section>
+</main>
+<script>
+$("form").on("submit", function(e) {
+    e.preventDefault();
+});
+    $("#chatBtn").on("click", function () {
+        var text = $("textarea").val();
+        $("#messagelist").append('<div class="message">' + text + '</div>');
+        $("textarea").val('').focus()
+    });
+</script>
+</body>
+</html>
