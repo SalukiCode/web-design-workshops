@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Saluki Code</title>
+	<link href="http://salukicode.com/css/main.min.css" rel="stylesheet" type="text/css">
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.0.2.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+   <style>
+    #draggable { width: 100%;  padding: 0.5em; }
+  </style>
+</head>
+<body>
+	<header class="draggy">
+		<h1 style="font-size: 4em;">Saluki Code</h1>
+	</header>
+	<main>
+		<section id="draggable">
+			<h1 class="ui-widget-content draggy">Workshop Workspace</h1>
+			<form id="form1">
+                <div id="dialogMsg" title="jQuery UI Dialog Window">
+                    This is a jQUery UI dialog window.
+                </div>
+            </form>
+            <a href="#" id="dialog" style="display: block">Show dialog window</a>
+            <a href="#" id="shake" style="display: block">Shake me</a>
+            <label for="date">Date picker: </label><input type="text" name="date" id="date">
+		</section>
+		<section class="explode">
+		    <img class="explode" src="https://pbs.twimg.com/profile_images/378800000822867536/3f5a00acf72df93528b6bb7cd0a4fd0c.jpeg">
+		</section>
+	</main>
+	
+	
+
+
+	<footer>
+		&copy; Saluki Code, 2016
+	</footer>
+      	<script type="text/javascript">
+	$("#form1").hide();
+      $("#dialog").on("click", function () {
+         $('#dialogMsg').dialog();
+      });
+      $( "#date" ).datepicker();
+      
+      /*$( function() {
+        $( "*" ).draggable();
+        $( ".draggy" ).draggable();
+        } );*/
+        
+        
+        $( "#shake" ).on("click",function() {
+     $(this ).effect( "shake" );
+            
+        }); 
+        
+    $( ".explode" ).on("click",function() {
+     $(this ).effect( "explode" );
+     window.setTimeout(function () {
+         $(".explode").fadeIn("slow");
+     },2000);
+     
+    });
+   </script>
+</body>
+</html>
+
