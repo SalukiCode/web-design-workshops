@@ -17,26 +17,18 @@
 		
 	</head>
 	
-	<body>
+<body>
 		<?php
 
 		$url = "http://salukicode.com/tools/assets/test.json";
 		
-//  Initiate curl
 $ch = curl_init();
-// Disable SSL verification
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-// Will return the response, if false it print the response
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-// Set the url
 curl_setopt($ch, CURLOPT_URL,$url);
-// Execute
 $result=curl_exec($ch);
-// Closing
 curl_close($ch);
 
-// Will dump a beauty json :3
-// var_dump(json_decode($result, true));
 
 class Team {
 	var $teamId;
@@ -55,39 +47,50 @@ class Team {
 	
 }
 
+$teams = json_decode($result);
 
+echo '<script> var myTeams = [';
 
-
-
-// create an object
-// $me = new Student("Kyle");
-
-$json = '{
-    "major": "Computer Science",
-    "year": "Sophomore",
-    "name": "Fred Fredski"
-}';
-
-$me = json_decode($result);
-
-
-$arr = $me;
-
-
-
-
-
-
-
-foreach ($arr as $value) {
-	echo '<h1> ' . $value->teamId . '</h1><p>abbreviation: ' . $value->abbreviation .'</p><p>teamName: '. $value->teamName .'</p><p>simpleName: '. $value->simpleName . '</p>' .'</p><p>location: '. $value->location . '</p>';    
+foreach ($teams as $team) {
+	echo '["' . $team->abbreviation . '","' . $team->teamName . '","' . $team->simpleName . '","' . $team->location . '","' . $team->teamId .'"],';
 }
 
+echo '];</script>';
 
 
-// show object properties
+
+echo '<select id="team-selector">';
+
+foreach ($teams as $team) {
+	echo '<option value="' . $team->teamName . '">' . $team->teamName . '</option><br>';
+}
+
+echo '</select>';
 
 		?>
+		
+		<h1 id="abbreviation"></h1>
+		<ul>
+			<li id="teamName"></li>
+			<li id="simpleName"></li>
+			<li id="location"></li>
+			<li id="teamId"></li>
+		</ul>
+		<script>
+			$("#team-selector").on("change load", function() {
+				
+				for (i = 0; i < myTeams.length; i++) {
+					if($(this).val() == myTeams[i][1]) {
+							$("#abbreviation").text(myTeams[i][0]);
+							$("#teamName").text(myTeams[i][1]);
+							$("#simpleName").text(myTeams[i][2]);
+							$("#location").text(myTeams[i][3]);
+							$("#teamId").text(myTeams[i][4]);
+						}
+				}
+			});
+		</script>
+		
 		
 	</body>
 </html>
