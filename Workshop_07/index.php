@@ -1,27 +1,36 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		
-		<title>PhpFiddle Initial Code</title>
-		
-		<script type="text/javascript" src="/js/jquery/1.7.2/jquery.min.js"></script>
-		
-		<script type="text/javascript">
-			
-		</script>
-		
-		<style type="text/css">
-			
+		<title>Saluki Code</title>
+		<link href="http://salukicode.com/css/main.min.css" rel="stylesheet" type="text/css">
+		<link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+		<script src="https://code.jquery.com/jquery-2.0.2.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+		<style>
+			#draggable { width: 100%;  padding: 0.5em; }
+			#teamName {
+
+			}
+			#selectedTeam, #teamName {
+								text-align: center;
+				background: maroon;
+				color: white;
+				list-style-type: none;
+			}
 		</style>
-		
 	</head>
 	
-<body>
-		<?php
+	<body>
+		<header class="draggy">
+			<h1 style="font-size: 4em;">Saluki Code</h1>
+		</header>
+		<main>
+			<section id="draggable">
+				<h1 class="ui-widget-content draggy">Workshop Workspace</h1>
+				<?php
 
-		$url = "http://salukicode.com/tools/assets/test.json";
-		
+$url = "http://salukicode.com/tools/assets/test.json";
+
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -67,15 +76,47 @@ foreach ($teams as $team) {
 
 echo '</select>';
 
-		?>
+				?>
+				<h1 class="shakey" id="teamName"></h1>
+				<ul id="selectedTeam">
+					<li class="shakey">Abbreviation: <span id="abbreviation"></span></li>
+					<li class="shakey">Simple Name: <span id="simpleName"></span></li>
+					<li class="shakey">Location: <span id="location"></span></li>
+					<li class="shakey">Id: <span id="teamId"></span></li>
+				</ul>
+			</section>
+		</main>
 		
-		<h1 id="abbreviation"></h1>
-		<ul>
-			<li id="teamName"></li>
-			<li id="simpleName"></li>
-			<li id="location"></li>
-			<li id="teamId"></li>
-		</ul>
+		
+		<footer>
+			&copy; Saluki Code, 2016
+		</footer>
+		<script type="text/javascript">
+			$("#form1").hide();
+			$("#dialog").on("click", function () {
+				$('#dialogMsg').dialog();
+			});
+			$( "#date" ).datepicker();
+			
+      $( function() {
+        $( "*" ).draggable();
+        $( ".draggy" ).draggable();
+        } );
+        
+        
+        $( ".shakey" ).on("click",function() {
+     $(this ).effect( "shake" );
+            
+        }); 
+        
+    $( ".explode" ).on("click",function() {
+     $(this ).effect( "explode" );
+     window.setTimeout(function () {
+         $(".explode").fadeIn("slow");
+     },2000);
+     
+    });
+   </script>
 		<script>
 			$("#team-selector").on("change load", function() {
 				
