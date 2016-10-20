@@ -9,13 +9,26 @@
 		<style>
 			#draggable { width: 100%;  padding: 0.5em; }
 			#teamName {
-
-			}
-			#selectedTeam, #teamName {
-								text-align: center;
+				text-align: center;
 				background: maroon;
 				color: white;
+				margin: .3em;
+			}
+			#selectedTeam {
 				list-style-type: none;
+				text-align: left;
+			}
+			.teamProperty {
+				font-weight: bold;
+				font-size: 2em;
+				background: maroon;
+				border-radius: 1em;
+				color: white;
+				margin: 1em;
+				padding: .2em;
+			}
+			#selectedTeam li {
+				margin: 3em;
 			}
 		</style>
 	</head>
@@ -71,7 +84,14 @@ echo '];</script>';
 echo '<select id="team-selector">';
 
 foreach ($teams as $team) {
-	echo '<option value="' . $team->teamName . '">' . $team->teamName . '</option><br>';
+	if($team == $teams[0]) {
+		echo '<option value="' . $team->teamName . '">' . $team->teamName . '</option>';
+	} else {
+		echo '<option value="' . $team->teamName . '">' . $team->teamName . '</option>';
+	}
+	
+	
+	
 }
 
 echo '</select>';
@@ -79,10 +99,10 @@ echo '</select>';
 				?>
 				<h1 class="shakey" id="teamName"></h1>
 				<ul id="selectedTeam">
-					<li class="shakey">Abbreviation: <span id="abbreviation"></span></li>
-					<li class="shakey">Simple Name: <span id="simpleName"></span></li>
-					<li class="shakey">Location: <span id="location"></span></li>
-					<li class="shakey">Id: <span id="teamId"></span></li>
+					<li class="shakey">Abbreviation: <span class="teamProperty" id="abbreviation"></span></li>
+					<li class="shakey">Simple Name: <span class="teamProperty" id="simpleName"></span></li>
+					<li class="shakey">Location: <span class="teamProperty" id="location"></span></li>
+					<li class="shakey">Id: <span class="teamProperty" id="teamId"></span></li>
 				</ul>
 			</section>
 		</main>
